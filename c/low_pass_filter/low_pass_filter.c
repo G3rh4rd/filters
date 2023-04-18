@@ -10,7 +10,9 @@ void init_low_pass_filter(low_pass_filter_t* low_pass_filter, float alpha, float
     low_pass_filter->value = initial_val;
 }
 
-void process_low_pass_filter(low_pass_filter_t* low_pass_filter, float val) {
+float process_low_pass_filter(low_pass_filter_t* low_pass_filter, float val) {
     float filtered_val = (low_pass_filter->alpha * low_pass_filter->value) + ((1.f - low_pass_filter->alpha) * val);
     low_pass_filter->value = filtered_val;
+
+    return filtered_val;
 }
